@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as variables;
+
+
+@mixin imageBeforeInput($icon) {
+    background: url(#{$icon}) no-repeat  14px 14px;
+    display: inline-block;
+    padding: 0.6em 1em 0.6em 3em;
+    border-radius: 0;
+    outline: none;
+    border: none
+
+}
+
+
+.wrapper-searchmega {
+    background-color: #fff !important;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+}
+input[type=search].inputSearch {
+    @include imageBeforeInput(variables.$icon-search);
+}
+
+input[type=search].inputselectLocation{
+    @include imageBeforeInput(variables.$icon-location);
+}
+select.inputselectCategory{
+    @include imageBeforeInput(variables.$icon-cateogry);
+}
+
+.btnFindJob{
+    
+}
+

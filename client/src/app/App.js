@@ -1,7 +1,9 @@
-import "./App.css";
-
+import RouterRender from '../routers/routerRender';
+import '../styles/index.scss';
 function App() {
-  return <div>React</div>;
+  return <>
+    <RouterRender/>
+  </>
 }
 
 export default App;
