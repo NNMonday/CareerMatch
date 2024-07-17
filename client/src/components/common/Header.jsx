@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
 
-        <Row className="justify-content-md-between my-3">
+        <Row className="justify-content-md-between py-3">
             <Col>
                 <div className='header__logo'>
                     <Link to={'/'}>
@@ -21,7 +21,9 @@ const Header = () => {
                     <div className="icon-notification lh-lg">
                         <FontAwesomeIcon icon={faBell} size='lg' />
                     </div>
-                    <Button className='rounded-1' variant="outline-primary">Post A Jobs</Button>{' '}
+                    <Button className='rounded-1' variant="outline-primary">
+                        <Link to={'/post-a-job'}>Post A Jobs</Link>
+                    </Button>{' '}
                     <div className='avatar float-end'>
                         <img src='users/user-1.jpg' alt="avatar.png" className='rounded-circle' width={40} height={40} />
                     </div>

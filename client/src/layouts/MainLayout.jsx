@@ -1,18 +1,21 @@
 import React from 'react';
 import MainNavbar from '../components/common/MainNavBar';
 import Header from '../components/common/Header';
-import Footer from '../components/common/Footer';
-import { Container } from 'react-bootstrap';
+import SideBar from '../components/SideBar';
+import clsx from 'clsx';
 
-const MainLayout = (props) => {
-    document.title = props.title; 
- 
+const MainLayout = ({ title, children, showSidebar }) => {
+    document.title = title;
+
     return (
         <>
-            <div className='container-md'>
+            <div className={clsx([showSidebar && 'bcontainer', 'container-md'])}>
                 <MainNavbar />
                 <Header />
-                {props.children}
+                <div className={clsx([showSidebar && 'vh-100 d-flex'])}>
+                    {showSidebar && <SideBar />}
+                    {children}
+                </div>
             </div>
 
         </>

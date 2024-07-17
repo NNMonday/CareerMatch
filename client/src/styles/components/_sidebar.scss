@@ -1,0 +1,72 @@
+.sidebar-dashboard {
+    width: 300px;
+    position: relative;
+    border: 1px solid #cccc;
+    padding: 1rem;
+    z-index: 99;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: all .3s ease-in-out;
+}
+
+.sidebar-dashboard-title {
+    color: #9199A3;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+
+.sidebar-dashboard-navlist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-dashboard-navlist-group {
+   
+    padding-left: 0;
+
+
+}
+
+
+.sidebar-dashboard-nav-item {
+    cursor: pointer;
+    padding: 1rem 0;
+    text-transform: capitalize;
+    transition: all 0.3s linear;
+}
+
+.sidebar-dashboard-nav-item a {
+    color: #9199A3;
+    padding: 1rem;
+
+}
+.sidebar-dashboard-nav-item:hover {
+    background-color: #a0c2e2d3;
+    border-left: 3px solid #003c8b;
+    
+}
+
+.sidebar-dashboard-nav-item:hover a {
+    color: #0A65CC;
+}
+
+
+
+
+.close-sidebar{
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    top: 2%;
+    right: -5%;
+}
+
+.close-sidebarr{
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    top: 14%;
+    right: 99%;
+}

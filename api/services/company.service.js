@@ -2,6 +2,20 @@ const { v4: uuidv4 } = require('uuid');
 const Job = require('../models/job.model');
 const createError = require('http-errors');
 const format = require('date-format');
+const { createCompany } = require('../models/company.model');
+
+async function insertCompany({ user_id, name, description }) {
+    if (!user_id || !name || !description) {
+        createError(400, "Invaild input job");
+    }
+    const company_id = uuidv4();
+    let params = [company_id, user_id, name, description];
+    const info = await createCompany(params);
+    return info;
+
+}
+
+
 async function getListJobPost(pageSize, pageCurrent, sortType, statusJob, companyId) {
     const pageSizeParse = parseInt(pageSize);
     const pageCurrentParse = parseInt(pageCurrent);
@@ -30,13 +44,14 @@ async function createJobService({ company_id, location, work_status, title, sala
 
 }
 
-async function updateJobService({ jobId, location, work_status, title, salary, status, quantity, required_experience, deadline, description, applicant_requirements, benefits, updateAt }) {
+async function updateJobService({ jobId, location, work_status, title, salary, status, quantity, required_experience, deadline, description, applicant_requirements, benefits }) {
     //validate input
-    if (!jobId || !title || !status || !quantity || !required_experience || !deadline || !description || !applicant_requirements || !benefits || !updateAt) {
+    if (!jobId || !title || !status || !quantity || !required_experience || !deadline || !description || !applicant_requirements || !benefits) {
         createError(400, "Invaild input job");
     }
     let currentNow = format(new Date());
-    let afterCheckInput = [location, work_status, title, salary, status, quantity, required_experience, deadline, description, applicant_requirements, benefits, currentNow, jobId];
+    let formatDeline = deadline.split('T')[0];
+    let afterCheckInput = [location, work_status, title, salary, status, quantity, required_experience, formatDeline, description, applicant_requirements, benefits, currentNow, jobId];
     const info = await Job.updateJob(afterCheckInput);
     return info;
 }
@@ -53,7 +68,7 @@ async function deactivateJobService({ jobId }) {
     if (!jobId) {
         createError(400, "Invaild id,status of Job");
     }
-    let afterCheckInput = ["reject", jobId];
+    let afterCheckInput = ["pending", jobId];
     const info = await Job.changeStatusJob(afterCheckInput);
     return info;
 }
@@ -67,5 +82,5 @@ async function activateJobService({ jobId }) {
 }
 
 module.exports = {
-    getListJobPost, getAJobPost, createJobService, updateJobService, deleteJobService, deactivateJobService, activateJobService
+    getListJobPost, getAJobPost, createJobService, updateJobService, deleteJobService, deactivateJobService, activateJobService, insertCompany
 }

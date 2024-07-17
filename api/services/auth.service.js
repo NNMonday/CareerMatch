@@ -35,8 +35,8 @@ async function registerService(userData) {
     // Creating new unique id
     const userId = uuidv4();
     const hashPassword = await hashPasswordHelper(password);
-    const newUser = await User.insertAUser({ id: userId, role, status: 'active', phone, email, password: hashPassword, avatar })
-    return newUser;
+    await User.insertAUser({ id: userId, role, status: 'active', phone, email, password: hashPassword, avatar })
+    return userId;
 }
 
 async function resetPasswordService(email) {

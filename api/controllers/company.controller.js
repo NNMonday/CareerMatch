@@ -1,5 +1,18 @@
 const createError = require('http-errors');
-const { getListJobPost, getAJobPost, createJobService, updateJobService, deleteJobService, deactivateJobService, activateJobService } = require('../services/company.service');
+const { getListJobPost, getAJobPost, createJobService, updateJobService, deleteJobService, deactivateJobService, activateJobService, insertCompany } = require('../services/company.service');
+
+
+
+
+
+async function processInsertCompany(req,res, next) {
+    try {
+        await insertCompany(req.body);
+        res.status(201).json({ message: "User registered successfully" })
+    } catch (error) {
+        next(createError(500, error));
+    }
+}
 
 /*
 method 1: View List Jobs Created 
@@ -104,5 +117,5 @@ async function activateJobPost(req, res,next) {
 }
 
 module.exports = {
-    listJobPost, aJobPost, createJobPost, updateJobPost, deleteJobPost, deactivateJobPost, activateJobPost
+    listJobPost, aJobPost, createJobPost, updateJobPost, deleteJobPost, deactivateJobPost, activateJobPost, processInsertCompany
 }

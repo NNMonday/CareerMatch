@@ -1,0 +1,44 @@
+@use '../abstracts';
+@use '../abstracts/variables' as variables;
+
+.group-title-job{
+    scale: 0.8;
+    transform: translateX(-8%);
+}
+.title-job {}
+
+.sub-status {
+    background-color: #E8F1FF;
+    color: #0066FF;
+    font-size: 1rem;
+    padding: 5px 7px;
+    top: 0.5rem;
+    right: -5%;
+    border-radius: 8px;
+}
+
+.group-info {
+    gap: 1rem;
+}
+
+.group-info li span::before {
+    content: url(variables.$icon-location);
+    margin-right: 3px;
+}
+
+.jobOverview{
+    border: 3px dotted #92bae8;
+    border-radius: 5px;
+    padding:1rem;
+}
+.group-infoJob{
+    display: flex;
+    flex-wrap: wrap;
+    
+    gap: 1rem;
+}
+
+.item-info{
+    text-align: left;
+    padding: 1rem;
+}

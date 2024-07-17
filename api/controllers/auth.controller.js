@@ -22,8 +22,8 @@ const register = async (req, res, next) => {
         if (!email || !password) {
             throw createError(401, 'Invalid email or password');
         }
-        const newUser = await registerService({ email, password, phone: phone || null, avatar: avatar || null, role });
-        res.status(201).json({ message: "User registered successfully" })
+        req.userId = await registerService({ email, password, phone: phone || null, avatar: avatar || null, role });
+        next();
     } catch (error) {
         next(createError(500, error));
     }

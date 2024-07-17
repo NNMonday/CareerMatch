@@ -1,7 +1,7 @@
 import React from 'react';
-import FilterBar from '../components/FilterBar';
-import SearchMega from '../components/common/SearchMega';
-import BearkCrumb from '../components/common/BearkCrumb';
+import FilterBar from '../../components/FilterBar';
+import SearchMega from '../../components/common/SearchMega';
+import BearkCrumb from '../../components/common/BearkCrumb';
 
 const FindCandidatePage = () => {
 

@@ -1,45 +1,21 @@
+const createError = require('http-errors');
+const db = require('../config/dbConnect');
 
 
-/*
-method 1: View List Jobs Created 
-GET: /list-jobs
-data: 
-*/
-async function name(params) {
-    
+async function createCompany(params) {
+    return new Promise ((resolve, reject) => {
+        const query = "INSERT INTO  careermatch.companies(id,user_id,name,description) VALUES (?,?,?,?)";
+        db.query(query,params,(err, results) => {
+            if (err) {
+                return reject(createError(400,err));
+            }
+            console.log(results);
+            resolve("OK insert company successfull!");
+        })
+    })
 }
-/**
- * method 2: View A Specific Jobs Created
- * GET: /specific-jobs
- * data:
- */
-/**
- * method 3: Create A Job 
- * POST: /create-jobs
- * data:
- */
-/**
- * method 4: Update A Job 
- * PUT: /update-jobs
- * data:
- */
-/**
- * method 5: Delete A Job 
- * DELETE: /delete-a-job
- * data:
- */
-//---------------status
-/**
- * method 6: Deactivate A Job 
- * PUT: /update-status-job
- * data:
- */
-/**
- * method 7: Activate A Job 
- * PUT: /update-status-job
- * data:
- */
+
 
 module.exports = {
-
+    createCompany
 }
